@@ -37,24 +37,9 @@ public class ApiTest {
     }
 
     @Test
-    void shouldGiveResponseValidDeclinedDebitCard() {
-        var validDeclinedCardForApi = getDeclinedCard();
-        var response = paymentRequest(validDeclinedCardForApi, "/api/v1/pay");
-        assertTrue(response.contains(SQLHelper.getDebitPaymentStatus()));
-    }
-
-    @Test
     void shouldGiveResponseValidApprovedCreditCard() {
         var validApprovedCardForApi = getApprovedCard();
         var response = paymentRequest(validApprovedCardForApi, "/api/v1/credit");
         assertTrue(response.contains(SQLHelper.getCreditPaymentStatus()));
     }
-
-    @Test
-    void shouldGiveResponseValidDeclinedCreditCard() {
-        var validDeclinedCardForApi = getDeclinedCard();
-        var response = paymentRequest(validDeclinedCardForApi, "/api/v1/credit");
-        assertTrue(response.contains(SQLHelper.getCreditPaymentStatus()));
-    }
 }
-

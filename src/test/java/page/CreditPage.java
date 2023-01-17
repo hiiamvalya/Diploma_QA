@@ -28,8 +28,6 @@ public class CreditPage {
 
     private SelenideElement wrongFormatMessage = $(byText("Неверный формат"));
 
-    private SelenideElement invalidCharMessage = $(byText("Поле содержит недопустимые символы"));
-
     private SelenideElement wrongExpirationMessage = $(byText("Неверно указан срок действия карты"));
 
     private SelenideElement cardExpiredMessage = $(byText("Истёк срок действия карты"));
@@ -74,13 +72,7 @@ public class CreditPage {
         wrongFormatMessage.shouldBe(visible, Duration.ofSeconds(11));
     }
 
-    public void waitForInvalidCharactersMessage() {
-        invalidCharMessage.shouldBe(visible, Duration.ofSeconds(11));
-    }
-
-    public void waitForWrongCardExpirationMessage() {
-        wrongExpirationMessage.shouldBe(visible, Duration.ofSeconds(11));
-    }
+    public void waitForWrongCardExpirationMessage() {wrongExpirationMessage.shouldBe(visible, Duration.ofSeconds(11));}
 
     public void waitForCardExpiredMessage() {
         cardExpiredMessage.shouldBe(visible, Duration.ofSeconds(11));

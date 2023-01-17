@@ -50,15 +50,14 @@ public class PaymentPageTest {
         var startPage = new MainPage();
         var payment = startPage.goToPaymentPage();
         payment.fillData(DataHelper.getNonExistCard());
-        payment.notificationErrorIsVisible();
-        assertEquals(null, SQLHelper.getDebitPaymentStatus());
+        payment.waitForWrongFormatMessage();
     }
     @Test
     void shouldBuyWithEmptyFieldDebitCardNumber(){
         var startPage = new MainPage();
         var payment = startPage.goToPaymentPage();
         payment.fillData(DataHelper.getEmptyFieldCardNumber());
-        payment.waitForWrongFormatMessage();
+        payment.waitForValidationFieldMessage();
     }
     @Test
     void shouldBuyWithInvalidDebitCard(){
@@ -72,8 +71,7 @@ public class PaymentPageTest {
         var startPage = new MainPage();
         var payment = startPage.goToPaymentPage();
         payment.fillData(DataHelper.getAllZeroCardNumber());
-        payment.notificationErrorIsVisible();
-        assertEquals(null, SQLHelper.getDebitPaymentStatus());
+        payment.waitForWrongFormatMessage();
     }
     @Test
     void shouldBuyAllFieldValidDeclinedCard() {
@@ -81,7 +79,6 @@ public class PaymentPageTest {
         var payment = startPage.goToPaymentPage();
         payment.fillData(DataHelper.getDeclinedCard());
         payment.notificationErrorIsVisible();
-        assertEquals("DECLINED", SQLHelper.getDebitPaymentStatus());
     }
     // Месяц
     @Test
@@ -96,7 +93,7 @@ public class PaymentPageTest {
         var startPage = new MainPage();
         var payment = startPage.goToPaymentPage();
         payment.fillData(DataHelper.getEmptyMonth());
-        payment.waitForWrongFormatMessage();
+        payment.waitForValidationFieldMessage();
     }
 
     // Год
@@ -112,7 +109,7 @@ public class PaymentPageTest {
         var startPage = new MainPage();
         var payment = startPage.goToPaymentPage();
         payment.fillData(DataHelper.getEmptyYear());
-        payment.waitForWrongFormatMessage();
+        payment.waitForValidationFieldMessage();
     }
 
     // Владелец

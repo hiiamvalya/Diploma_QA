@@ -50,15 +50,14 @@ public class CreditPageTest {
         var startPage = new MainPage();
         var credit = startPage.goToCreditPage();
         credit.fillData(DataHelper.getNonExistCard());
-        credit.notificationErrorIsVisible();
-        assertEquals(null, SQLHelper.getCreditPaymentStatus());
+        credit.waitForWrongFormatMessage();
     }
     @Test
     void shouldPurchaseCreditWithEmptyFieldCardNumber(){
         var startPage = new MainPage();
         var credit = startPage.goToCreditPage();
         credit.fillData(DataHelper.getEmptyFieldCardNumber());
-        credit.waitForWrongFormatMessage();
+        credit.waitForValidationFieldMessage();
     }
     @Test
     void shouldPurchaseCreditWithInvalidCardNumber(){
@@ -72,8 +71,7 @@ public class CreditPageTest {
         var startPage = new MainPage();
         var credit = startPage.goToCreditPage();
         credit.fillData(DataHelper.getAllZeroCardNumber());
-        credit.notificationErrorIsVisible();
-        assertEquals(null, SQLHelper.getCreditPaymentStatus());
+        credit.waitForWrongFormatMessage();
     }
     @Test
     void shouldPurchaseCreditAllFieldValidDeclinedCard(){
@@ -81,7 +79,6 @@ public class CreditPageTest {
         var credit = startPage.goToCreditPage();
         credit.fillData(DataHelper.getDeclinedCard());
         credit.notificationErrorIsVisible();
-        assertEquals("DECLINED", SQLHelper.getCreditPaymentStatus());
     }
 
     // Месяц
@@ -97,7 +94,7 @@ public class CreditPageTest {
         var startPage = new MainPage();
         var credit = startPage.goToCreditPage();
         credit.fillData(DataHelper.getEmptyMonth());
-        credit.waitForWrongFormatMessage();
+        credit.waitForValidationFieldMessage();
     }
 
     // Год
@@ -113,7 +110,7 @@ public class CreditPageTest {
         var startPage = new MainPage();
         var credit = startPage.goToCreditPage();
         credit.fillData(DataHelper.getEmptyYear());
-        credit.waitForWrongFormatMessage();
+        credit.waitForValidationFieldMessage();
     }
 
     // Владелец

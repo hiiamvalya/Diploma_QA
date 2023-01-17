@@ -68,7 +68,7 @@ public class DataHelper {
     }
 
     public static Card getInvalidHolderCardIfRusSym() {
-        return new Card("4444 4444 4444 4441", getValidMonth(), getValidYear(), "Иванов Иван", getValidCvc());
+        return new Card("4444 4444 4444 4441", getValidMonth(), getValidYear(), getRusHolder(), getValidCvc());
     }
 
     // "CVC/CVV"
@@ -106,7 +106,7 @@ public class DataHelper {
         return fakerEn.name().firstName() + " " + fakerEn.name().lastName();
     }
 
-    public static String getRusHolder(){
+    public static String getRusHolder() {
         return fakerRu.name().fullName();
     }
     public static String getValidCvc() {

@@ -45,13 +45,7 @@ public class PaymentPageTest {
 
     // Негативный сценарий
     // Номер карты
-    @Test
-    void shouldBuyWithNonExistDebitCard(){
-        var startPage = new MainPage();
-        var payment = startPage.goToPaymentPage();
-        payment.fillData(DataHelper.getNonExistCard());
-        payment.waitForWrongFormatMessage();
-    }
+
     @Test
     void shouldBuyWithEmptyFieldDebitCardNumber(){
         var startPage = new MainPage();

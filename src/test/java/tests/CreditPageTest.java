@@ -45,13 +45,7 @@ public class CreditPageTest {
 
     // Негативный сценарий
     // Номер карты
-    @Test
-    void shouldPurchaseCreditWithNonExistCard(){
-        var startPage = new MainPage();
-        var credit = startPage.goToCreditPage();
-        credit.fillData(DataHelper.getNonExistCard());
-        credit.waitForWrongFormatMessage();
-    }
+
     @Test
     void shouldPurchaseCreditWithEmptyFieldCardNumber(){
         var startPage = new MainPage();

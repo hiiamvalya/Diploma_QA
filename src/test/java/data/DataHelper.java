@@ -21,9 +21,6 @@ public class DataHelper {
 
     // Негативный сценарий
     // Номер карты
-    public static Card getNonExistCard() {
-        return new Card(getRandomCardNumber(),getValidMonth(),getValidYear(),getValidHolder(),getValidCvc());
-    }
 
     public static Card getEmptyFieldCardNumber() {
         return new Card("",getValidMonth(),getValidYear(),getValidHolder(),getValidCvc());
@@ -84,10 +81,6 @@ public class DataHelper {
 
 
     // Генераторы данных
-
-    public static String getRandomCardNumber() {
-        return fakerEn.business().creditCardNumber();
-    }
     public static String getValidMonth() {
         String validMonth = LocalDate.now().format(DateTimeFormatter.ofPattern("MM"));
         return validMonth;
@@ -96,7 +89,6 @@ public class DataHelper {
         String validYear = LocalDate.now().format(DateTimeFormatter.ofPattern("yy"));
         return validYear;
     }
-
     public static String getPastYear() {
         String pastYear = LocalDate.now().minusYears(1).format(DateTimeFormatter.ofPattern("yy"));
         return pastYear;

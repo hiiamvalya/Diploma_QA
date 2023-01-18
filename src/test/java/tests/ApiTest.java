@@ -6,9 +6,9 @@ import data.SQLHelper;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.*;
 
-import static data.DataHelper.*;
+import static data.DataHelper.getApprovedCard;
 import static data.RestApiHelper.paymentRequest;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class ApiTest {
 
